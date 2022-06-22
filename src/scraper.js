@@ -12,6 +12,10 @@ export default async function (url) {
       "--disable-dev-shm-usage",
       "--disable-setuid-sandbox",
       "--no-sandbox",
+      "--single-process",
+      "--disable-web-security",
+      "--disable-dev-profile",
+      "--no-zygote",
     ],
   };
 
@@ -20,13 +24,18 @@ export default async function (url) {
 
   await page.setRequestInterception(true);
   page.on('request', request => {
+    if (request.isInterceptResolutionHandled()) { return; }
+
     try {
       if (request.isNavigationRequest() && request.redirectChain().length) {
-        request.abort();
+        // Block redirects
+        return request.abort('blockedbyclient', 1);
       } else if (result['info'] !== undefined) {
-        request.abort();
+        // Block anything other than the first request
+        return request.abort('blockedbyclient', 1);
       } else {
-        request.continue();
+        // Allow first request.
+        return request.continue(request.continueRequestOverrides(), 0);
       }
     } catch (_) {
       if (result['info'] == undefined) {
@@ -61,6 +70,8 @@ export default async function (url) {
       result = { 'info': { 'version': '2', 'error': 'There was an unknown error.' } };
     }
   });
+
+  await page.goto('about:blank');
 
   await browser.close();
 
