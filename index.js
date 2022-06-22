@@ -43,7 +43,7 @@ const scrapeHandler = async function (req, res) {
                     await semaphore.runExclusive(async () => {
                         console.log(`\t{${thisScrapeID}} Got lock`);
                         console.log(`\t{${thisScrapeID}} Scraping: ${bodyjson['url']}`);
-                        const result = await scrape(bodyjson['url']);
+                        const result = await scrape(bodyjson['url'], thisScrapeID);
                         var statusCode; 
 
                         if (result['info']['error'] === undefined) {

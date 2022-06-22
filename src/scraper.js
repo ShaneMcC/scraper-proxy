@@ -3,8 +3,9 @@ import StealthPlugin from 'puppeteer-extra-plugin-stealth'
 import fs from 'fs-extra';
 puppeteer.use(StealthPlugin());
 
-export default async function (url) {
+export default async function (url, scrapeID = undefined) {
   var result = {};
+  if (scrapeID == undefined) { scrapeID = 'time-' + process.hrtime.bigint(); }
   const options = {
     executablePath: '/usr/bin/google-chrome',
     headless: true,
@@ -17,6 +18,7 @@ export default async function (url) {
       "--disable-web-security",
       "--disable-dev-profile",
       "--no-zygote",
+      `--user-data-dir="/tmp/puppeteer-scraper-${scrapeID}"`
     ],
   };
 
