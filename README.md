@@ -17,7 +17,7 @@ docker run -p 8765:8765 shanemcc/scraper-proxy
 Accepts some env vars for config:
 
 | Variable      | Description                      | Default      |
-| ------------- | -------------------------------- | ------------ |
+| :-----------: | :------------------------------: | :----------: |
 | `HOST`        | Host to listen on                | `0.0.0.0`    |
 | `PORT`        | Port to listen on                | `8765`       |
 | `APIKEY`      | API Key to accept                | `SOMEAPIKEY` |
