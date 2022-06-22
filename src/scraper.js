@@ -50,7 +50,7 @@ export default async function (url) {
         'version': '2',
         'headers': response.headers(),
         'statusCode': response.status(),
-        'statusText': response.statusText(),
+        'statusMessage': response.statusText(),
       };
 
       if (response.status() == 200) {

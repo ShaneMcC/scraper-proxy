@@ -55,7 +55,7 @@ Will give you some nice json something like:
       "vary": "Accept-Encoding"
     },
     "statusCode": 200,
-    "statusText": ""
+    "statusMessage": ""
   },
   "body": "1.1.1.1\n"
 }
