@@ -24,15 +24,13 @@ const semaphore = new Semaphore(maxConcurrentRequests);
 var scrapeID = 0;
 
 const scrapeHandler = async function (req, res) {
-    const thisScrapeID = `req-${scrapeID++}`;
-
     if (req.method === "GET") {
-        console.log(`\t{${thisScrapeID}} GET - Ignoring.`);
+        console.log(`\tGET - Ignoring.`);
 
         res.writeHead(200, { "Content-Type": "application/json" });
         res.end(JSON.stringify({ 'info': { 'version': '2', 'message': 'There might be something here.' } }, null, 2));
     } else if (req.method === "POST") {
-        console.log(`\t{${thisScrapeID}} POST - Handling.`);
+        console.log(`\tPOST - Handling.`);
 
         if (req.headers['x-rapidapi-key'] === validKEY) {
             var body = "";
@@ -41,7 +39,7 @@ const scrapeHandler = async function (req, res) {
                 const bodyjson = JSON.parse(body);
 
                 if (bodyjson['url'] !== undefined) {
-
+                    const thisScrapeID = `req-${scrapeID++}`;
                     await semaphore.runExclusive(async () => {
                         console.log(`\t{${thisScrapeID}} Got lock`);
                         console.log(`\t{${thisScrapeID}} Scraping: ${bodyjson['url']}`);
@@ -56,14 +54,14 @@ const scrapeHandler = async function (req, res) {
                             statusCode = 500;
                         }
 
+                        result['info']['scrape-id'] = thisScrapeID;
                         res.writeHead(statusCode, { "Content-Type": "application/json" });
                         res.end(JSON.stringify(result, null, 2));
                     });
-
                 }
             });
         } else {
-            console.log(`\t{${thisScrapeID}} Invalid or missing API Key: ${req.headers['x-rapidapi-key']}`);
+            console.log(`\tInvalid or missing API Key: ${req.headers['x-rapidapi-key']}`);
             res.writeHead(500, { "Content-Type": "application/json" });
             res.end(JSON.stringify({ 'info': { 'version': '2', 'error': 'Invalid or missing API Key' } }, null, 2));
         }
