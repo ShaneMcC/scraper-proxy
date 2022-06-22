@@ -1,5 +1,6 @@
 import puppeteer from 'puppeteer-extra'
 import StealthPlugin from 'puppeteer-extra-plugin-stealth'
+import fs from 'fs-extra';
 puppeteer.use(StealthPlugin());
 
 export default async function (url) {
@@ -20,6 +21,16 @@ export default async function (url) {
   };
 
   const browser = await puppeteer.launch(options);
+
+  // Find chrome user data dir (puppeteer_dev_profile-XXXXX) to delete it after it had been used
+  let chromeTmpDataDir = null;
+  let chromeSpawnArgs = browser.process().spawnargs;
+  for (let i = 0; i < chromeSpawnArgs.length; i++) {
+    if (chromeSpawnArgs[i].indexOf("--user-data-dir=") === 0) {
+      chromeTmpDataDir = chromeSpawnArgs[i].replace("--user-data-dir=", "");
+    }
+  }
+
   const page = await browser.newPage()
 
   await page.setRequestInterception(true);
@@ -74,6 +85,11 @@ export default async function (url) {
   await page.goto('about:blank');
 
   await browser.close();
+
+  if (chromeTmpDataDir !== null) {
+    console.log(`Removing: ${chromeTmpDataDir}`)
+    fs.removeSync(chromeTmpDataDir);
+  }
 
   return result;
 }
