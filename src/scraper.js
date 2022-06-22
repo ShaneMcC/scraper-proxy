@@ -87,7 +87,6 @@ export default async function (url) {
   await browser.close();
 
   if (chromeTmpDataDir !== null) {
-    console.log(`Removing: ${chromeTmpDataDir}`)
     fs.removeSync(chromeTmpDataDir);
   }
 
