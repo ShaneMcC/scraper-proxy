@@ -24,15 +24,15 @@ const semaphore = new Semaphore(maxConcurrentRequests);
 var scrapeID = 0;
 
 const scrapeHandler = async function (req, res) {
-    const thisScrapeID = scrapeID++;
+    const thisScrapeID = `req-${scrapeID++}`;
 
     if (req.method === "GET") {
-        console.log("\t" + '{req-' + thisScrapeID + '} GET - Ignoring.');
+        console.log(`\t{${thisScrapeID}} GET - Ignoring.`);
 
         res.writeHead(200, { "Content-Type": "application/json" });
         res.end(JSON.stringify({ 'info': { 'version': '2', 'message': 'There might be something here.' } }, null, 2));
     } else if (req.method === "POST") {
-        console.log("\t" + '{req-' + thisScrapeID + '} POST - Handling.');
+        console.log(`\t{${thisScrapeID}} POST - Handling.`);
 
         if (req.headers['x-rapidapi-key'] === validKEY) {
             var body = "";
@@ -43,16 +43,16 @@ const scrapeHandler = async function (req, res) {
                 if (bodyjson['url'] !== undefined) {
 
                     await semaphore.runExclusive(async () => {
-                        console.log("\t" + '{req-' + thisScrapeID + '} Got lock');
-                        console.log("\t" + '{req-' + thisScrapeID + '} Scraping: ' + bodyjson['url']);
+                        console.log(`\t{${thisScrapeID}} Got lock`);
+                        console.log(`\t{${thisScrapeID}} Scraping: ${bodyjson['url']}`);
                         const result = await scrape(bodyjson['url']);
                         var statusCode; 
 
                         if (result['info']['error'] === undefined) {
-                            console.log("\t\t" + '{req-' + thisScrapeID + '} Success.');
+                            console.log(`\t\t{${thisScrapeID}} Success.`);
                             statusCode = 200;
                         } else {
-                            console.log("\t\t" + '{req-' + thisScrapeID + '} Failed. (' + result['info']['error'] + ')');
+                            console.log(`\t\t{${thisScrapeID}} Failed. (${result['info']['error']})`);
                             statusCode = 500;
                         }
 
@@ -63,7 +63,7 @@ const scrapeHandler = async function (req, res) {
                 }
             });
         } else {
-            console.log("\t" + '{req-' + thisScrapeID + '} Invalid or missing API Key: ' + req.headers['x-rapidapi-key']);
+            console.log(`\t{req-${thisScrapeID}} Invalid or missing API Key: ${req.headers['x-rapidapi-key']}`);
             res.writeHead(500, { "Content-Type": "application/json" });
             res.end(JSON.stringify({ 'info': { 'version': '2', 'error': 'Invalid or missing API Key' } }, null, 2));
         }
