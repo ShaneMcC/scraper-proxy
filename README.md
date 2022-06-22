@@ -1,6 +1,6 @@
 # Scraper-Proxy
 
-Scraper proxy to bypass cloudflare detecting us as a bot for doign TLS differently than real browsers.
+Scraper proxy to bypass cloudflare detecting us as a bot for doing TLS differently than real browsers.
 
 Idea based on reading https://pixeljets.com/blog/scrape-ninja-bypassing-cloudflare-403-code-1020-errors/
 
@@ -11,15 +11,17 @@ Somewhat API-Compatible with https://rapidapi.com/restyler/api/scrapeninja for b
 Run with docker.
 
 ```bash
-docker run -p 8765:8765 registry.shanemcc.net/scraper-proxy/scraper-proxy
+docker run -p 8765:8765 shanemcc/scraper-proxy
 ```
 
 Accepts some env vars for config:
 
-`HOST` - Host to listen on (Default: `0.0.0.0`)
-`PORT` - Port to listen on (Default: `8765`)
-`APIKEY` - API Key to accept (Default: `SOMEAPIKEY`)
-`MAXREQUESTS` - Max concurrent requests to allow (Default: `5`)
+| Variable      | Description                      | Default      |
+| ------------- | -------------------------------- | ------------ |
+| `HOST`        | Host to listen on                | `0.0.0.0`    |
+| `PORT`        | Port to listen on                | `8765`       |
+| `APIKEY`      | API Key to accept                | `SOMEAPIKEY` |
+| `MAXREQUESTS` | Max concurrent requests to allow | `5`          |
 
 # Usage
 
