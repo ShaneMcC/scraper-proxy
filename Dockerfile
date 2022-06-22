@@ -18,7 +18,7 @@ RUN yarn install
 
 FROM install AS run
 COPY index.js /app/
-# COPY src/* /app/src/
+COPY src/* /app/src/
 
 # Explicitly add Tini rather than relying on --init
 ENV TINI_VERSION v0.19.0

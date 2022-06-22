@@ -7,7 +7,7 @@ dotenv.config()
 
 import http from 'http'
 
-import scrape from './scraper.js'
+import scrape from './src/scraper.js'
 
 import consolestamp from 'console-stamp'
 consolestamp(console, '[yyyy-mm-dd HH:MM:ss.l]');
