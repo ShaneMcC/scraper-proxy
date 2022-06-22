@@ -63,7 +63,7 @@ const scrapeHandler = async function (req, res) {
                 }
             });
         } else {
-            console.log(`\t{req-${thisScrapeID}} Invalid or missing API Key: ${req.headers['x-rapidapi-key']}`);
+            console.log(`\t{${thisScrapeID}} Invalid or missing API Key: ${req.headers['x-rapidapi-key']}`);
             res.writeHead(500, { "Content-Type": "application/json" });
             res.end(JSON.stringify({ 'info': { 'version': '2', 'error': 'Invalid or missing API Key' } }, null, 2));
         }
