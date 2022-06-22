@@ -59,6 +59,8 @@ Will give you some nice json something like:
 }
 ```
 
+Unlike other similar projects, this intentionally tries to do as little as possible, requesting only the url asked for, and not following any redirects or requesting any additional extra resources from the page.
+
 # Known Issues
 
 This is probably buggy, I don't reccomend running it in production.
