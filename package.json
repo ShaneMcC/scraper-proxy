@@ -2,7 +2,7 @@
     "type": "module",
     "dependencies": {
         "async-mutex": "^0.3.2",
-        "console-stamp": "^3.0.6",
+        "console-stamp": "^3.1.1",
         "dotenv": "^16.0.1",
         "http": "^0.0.1-security",
         "puppeteer": "^14.4.1",
