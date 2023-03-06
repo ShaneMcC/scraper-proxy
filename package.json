@@ -6,7 +6,7 @@
         "dotenv": "^16.0.1",
         "http": "^0.0.1-security",
         "puppeteer": "^14.4.1",
-        "puppeteer-extra": "^3.3.0",
+        "puppeteer-extra": "^3.3.6",
         "puppeteer-extra-plugin-stealth": "^2.11.2"
     }
 }
