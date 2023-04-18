@@ -5,7 +5,7 @@
         "console-stamp": "^3.1.1",
         "dotenv": "^16.0.3",
         "http": "^0.0.1-security",
-        "puppeteer": "^19.9.0",
+        "puppeteer": "^19.9.1",
         "puppeteer-extra": "^3.3.6",
         "puppeteer-extra-plugin-stealth": "^2.11.2"
     }
