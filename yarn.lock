@@ -234,10 +234,10 @@ concat-map@0.0.1:
   resolved "https://registry.yarnpkg.com/concat-map/-/concat-map-0.0.1.tgz#d8a96bd77fd68df7793a73036a3ba0d5405d477b"
   integrity sha512-/Srv4dswyQNBfohGpz9o6Yb3Gz3SrUDqBH5rTuhGR7ahtlbYKnVxw2bCFMRljaA7EXHaXZ8wsHdodFvbkhKmqg==
 
-console-stamp@^3.1.1:
-  version "3.1.1"
-  resolved "https://registry.yarnpkg.com/console-stamp/-/console-stamp-3.1.1.tgz#24eefca63b2cebf89588af177b5638832a7cdaee"
-  integrity sha512-NTbqQ9X57xffQKTJbAm4h/ro7JNR2uD3369NeTjmRdfPJ2QmkmCUnMvC1QSxZPQOof3WPrkuA6DQV5+n35ZiIA==
+console-stamp@^3.1.2:
+  version "3.1.2"
+  resolved "https://registry.yarnpkg.com/console-stamp/-/console-stamp-3.1.2.tgz#35dac393e16069a4d9d37b71ca6d5d13d7f3f8fd"
+  integrity sha512-ab66x3NxOTxPuq71dI6gXEiw2X6ql4Le5gZz0bm7FW3FSCB00eztra/oQUuCoCGlsyKOxtULnHwphzMrRtzMBg==
   dependencies:
     chalk "^4.1.2"
     dateformat "^4.6.3"
