@@ -8,17 +8,17 @@ export default async function (url, scrapeID = undefined, allowRedirects = false
   if (scrapeID == undefined) { scrapeID = 'time-' + process.hrtime.bigint(); }
   const options = {
     executablePath: '/usr/bin/google-chrome',
-    headless: true,
+    headless: 'new',
     args: [
       "--disable-gpu",
       "--disable-dev-shm-usage",
       "--disable-setuid-sandbox",
       "--no-sandbox",
-      "--single-process",
+      // "--single-process",
       "--disable-web-security",
       "--disable-dev-profile",
       "--no-zygote",
-      `--user-data-dir="/tmp/puppeteer-scraper-${scrapeID}"`
+      `--user-data-dir=/tmp/puppeteer-scraper-${scrapeID}`
     ],
   };
 
