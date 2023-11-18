@@ -3,7 +3,7 @@ import StealthPlugin from 'puppeteer-extra-plugin-stealth'
 import fs from 'fs-extra';
 puppeteer.use(StealthPlugin());
 
-export default async function (url, scrapeID = undefined) {
+export default async function (url, scrapeID = undefined, allowRedirects = false) {
   var result = {};
   if (scrapeID == undefined) { scrapeID = 'time-' + process.hrtime.bigint(); }
   const options = {
@@ -41,8 +41,8 @@ export default async function (url, scrapeID = undefined) {
 
     try {
       if (request.isNavigationRequest() && request.redirectChain().length) {
-        // Block redirects
-        return request.abort('blockedbyclient', 1);
+        // Block or allow redirects
+        return allowRedirects ? request.continue(request.continueRequestOverrides(), 0) : request.abort('blockedbyclient', 1)       
       } else if (result['info'] !== undefined) {
         // Block anything other than the first request
         return request.abort('blockedbyclient', 1);
@@ -64,6 +64,9 @@ export default async function (url, scrapeID = undefined) {
         'headers': response.headers(),
         'statusCode': response.status(),
         'statusMessage': response.statusText(),
+        'allowRedirects': allowRedirects,
+        'requestUrl': url,
+        'finalUrl': response.url(),
       };
 
       if (response.status() == 200) {

@@ -24,12 +24,12 @@ const semaphore = new Semaphore(maxConcurrentRequests);
 
 var scrapeID = 0;
 
-const handleScrapeRequest = async function(res, url) {
+const handleScrapeRequest = async function(res, url, allowRedirects) {
     const thisScrapeID = `req-${scrapeID++}`;
     await semaphore.runExclusive(async () => {
         console.log(`\t{${thisScrapeID}} Got lock`);
         console.log(`\t{${thisScrapeID}} Scraping: ${url}`);
-        const result = await scrape(url, thisScrapeID);
+        const result = await scrape(url, thisScrapeID, allowRedirects);
         var statusCode; 
 
         if (result['info']['error'] === undefined) {
@@ -52,17 +52,24 @@ const handleScrapeError = async function(res, message, extra, code = 400) {
     res.end(JSON.stringify({ 'info': { 'version': '2', 'code': code, 'error': message } }, null, 2));
 }
 
+const parseBool = function(val) {
+    try {
+        return val === 1 || val === '1' || val.toLowerCase() === 'true' || val.toLowerCase() === 'yes' || val.toLowerCase() === 'on'
+    } catch (err) { return false; }
+}
+
 const scrapeHandler = async function (req, res) {
     if (req.method === "GET") {
         console.log(`\tGET - Handling.`);
 
         const searchParams = new URLSearchParams(nodeurl.parse(req.url).search);
         const url = searchParams.get('url');
+        const allowRedirects = parseBool(searchParams.get('allowRedirects'));
         const key = searchParams.get('key');
 
         if (key !== null && key === validKEY) {
             if (url !== null) {
-                await handleScrapeRequest(res, url);
+                await handleScrapeRequest(res, url, allowRedirects);
             } else {
                 await handleScrapeError(res, 'Invalid or missing URL');
             }
@@ -77,12 +84,17 @@ const scrapeHandler = async function (req, res) {
             var body = "";
             req.on("data", chunk => body += chunk);
             req.on("end", async () => {
-                const bodyjson = JSON.parse(body);
+                try {
+                    const bodyjson = JSON.parse(body);
 
-                if (bodyjson['url'] !== undefined) {
-                    await handleScrapeRequest(res, bodyjson['url']);
-                } else {
-                    await handleScrapeError(res, 'Invalid or missing URL');
+                    if (bodyjson['url'] !== undefined) {
+                        const allowRedirects = bodyjson['allowRedirects'] !== undefined ? bodyjson['allowRedirects'] : false;
+                        await handleScrapeRequest(res, bodyjson['url'], allowRedirects);
+                    } else {
+                        await handleScrapeError(res, 'Invalid or missing URL');
+                    }
+                } catch (error) {
+                    await handleScrapeError(res, 'Error handling scrape request', error);
                 }
             });
         } else {
