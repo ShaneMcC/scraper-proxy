@@ -3,7 +3,7 @@
     "dependencies": {
         "async-mutex": "^0.4.1",
         "console-stamp": "^3.1.2",
-        "dotenv": "^16.4.0",
+        "dotenv": "^16.4.1",
         "http": "^0.0.1-security",
         "puppeteer": "^21.7.0",
         "puppeteer-extra": "^3.3.6",
