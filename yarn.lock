@@ -326,10 +326,10 @@ devtools-protocol@0.0.1464554:
   resolved "https://registry.yarnpkg.com/devtools-protocol/-/devtools-protocol-0.0.1464554.tgz#54d88398c99ad93fc81c35569fba9473b6e223d0"
   integrity sha512-CAoP3lYfwAGQTaAXYvA6JZR0fjGUb7qec1qf4mToyoH2TZgUFeIqYcjh6f9jNuhHfuZiEdH+PONHYrLhRQX6aw==
 
-dotenv@^16.6.0:
-  version "16.6.0"
-  resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-16.6.0.tgz#b96bd4e7c2043ba5f51cbe1b8f9347850c864850"
-  integrity sha512-Omf1L8paOy2VJhILjyhrhqwLIdstqm1BvcDPKg4NGAlkwEu9ODyrFbvk8UymUOMCT+HXo31jg1lArIrVAAhuGA==
+dotenv@^17.0.0:
+  version "17.0.0"
+  resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-17.0.0.tgz#0b0336dc1a4237bcfa772e01d5587e98ebb7e3c2"
+  integrity sha512-A0BJ5lrpJVSfnMMXjmeO0xUnoxqsBHWCoqqTnGwGYVdnctqXXUEhJOO7LxmgxJon9tEZFGpe0xPRX0h2v3AANQ==
 
 emoji-regex@^8.0.0:
   version "8.0.0"
