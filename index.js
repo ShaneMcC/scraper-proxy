@@ -8,8 +8,6 @@ dotenv.config()
 import http from 'http'
 import { default as nodeurl, URLSearchParams } from 'url'
 
-import scrape from './src/scraper.js'
-
 import consolestamp from 'console-stamp'
 consolestamp(console, '[yyyy-mm-dd HH:MM:ss.l]');
 
@@ -18,7 +16,20 @@ import { Semaphore } from 'async-mutex';
 const host = process.env.LISTEN_HOST || '0.0.0.0';
 const port = process.env.LISTEN_PORT || '8765';
 const validKEY = process.env.APIKEY || 'SOMEAPIKEY';
+const desiredMethod = process.env.METHOD || 'playwrite';
 const maxConcurrentRequests = process.env.MAXREQUESTS || 5;
+
+import scrape_puppeteer from './src/scraper-puppeteer.js'
+import scrape_playwrite from './src/scraper-playwright.js'
+
+var scrape, method
+if (desiredMethod == 'puppeteer') {
+    method = 'puppeteer'
+    scrape = scrape_puppeteer
+} else {
+    method = 'playwrite'
+    scrape = scrape_playwrite
+}
 
 const semaphore = new Semaphore(maxConcurrentRequests);
 
@@ -30,7 +41,7 @@ const handleScrapeRequest = async function(res, url, allowRedirects) {
         console.log(`\t{${thisScrapeID}} Got lock`);
         console.log(`\t{${thisScrapeID}} Scraping: ${url}`);
         const result = await scrape(url, thisScrapeID, allowRedirects);
-        var statusCode; 
+        var statusCode;
 
         if (result['info']['error'] === undefined) {
             console.log(`\t\t{${thisScrapeID}} Success.`);
@@ -76,7 +87,7 @@ const scrapeHandler = async function (req, res) {
         } else {
             await handleScrapeError(res, 'Invalid or missing API Key', key);
         }
-        
+
     } else if (req.method === "POST") {
         console.log(`\tPOST - Handling.`);
 
@@ -126,7 +137,7 @@ const requestListener = async function (req, res) {
         scrapeHandler(req, res);
     } else {
         console.log('No handler');
-        
+
         await handleScrapeError(res, 'Unknown URL', '', 404);
     }
 };
@@ -135,4 +146,5 @@ const server = http.createServer(requestListener);
 server.listen(port, host, () => {
     console.log(`Server is running on http://${host}:${port}`);
     console.log(`API Key is ${validKEY}`);
+    console.log(`Scraping method is ${method} (Wanted: ${desiredMethod})`);
 });

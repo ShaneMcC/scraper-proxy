@@ -8,7 +8,7 @@ export default async function (url, scrapeID = undefined, allowRedirects = false
   if (scrapeID == undefined) { scrapeID = 'time-' + process.hrtime.bigint(); }
   const options = {
     executablePath: '/usr/bin/google-chrome',
-    headless: 'new',
+    headless: true,
     args: [
       "--disable-gpu",
       "--disable-dev-shm-usage",
@@ -42,7 +42,7 @@ export default async function (url, scrapeID = undefined, allowRedirects = false
     try {
       if (request.isNavigationRequest() && request.redirectChain().length) {
         // Block or allow redirects
-        return allowRedirects ? request.continue(request.continueRequestOverrides(), 0) : request.abort('blockedbyclient', 1)       
+        return allowRedirects ? request.continue(request.continueRequestOverrides(), 0) : request.abort('blockedbyclient', 1)
       } else if (result['info'] !== undefined) {
         // Block anything other than the first request
         return request.abort('blockedbyclient', 1);
@@ -88,8 +88,6 @@ export default async function (url, scrapeID = undefined, allowRedirects = false
   });
 
   await page.goto('about:blank');
-
-  await browser.close();
 
   if (chromeTmpDataDir !== null) {
     fs.removeSync(chromeTmpDataDir);
