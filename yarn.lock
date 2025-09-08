@@ -660,17 +660,17 @@ parse-json@^5.2.0:
     json-parse-even-better-errors "^2.3.0"
     lines-and-columns "^1.1.6"
 
-patchright-core@1.52.5:
-  version "1.52.5"
-  resolved "https://registry.npmjs.org/patchright-core/-/patchright-core-1.52.5.tgz"
-  integrity sha512-8rnLVEK9jDZWzFPy2hCQrp4xhU7zgE8IqseZyjGkgxf+jpAWTuGNgIAlcsKZMfQrDL8j1mZgRIGNAQT00nk6QA==
+patchright-core@1.55.1:
+  version "1.55.1"
+  resolved "https://registry.yarnpkg.com/patchright-core/-/patchright-core-1.55.1.tgz#246d930dee8bc81b46c1dff490de17d8268c9d5e"
+  integrity sha512-SHUW++cXt+htd726M/0aBstVuS5O961V0ua3DWJ/b/fsBA498XORzKbLYOyqo/MeJhOSAOdKtutmfq3gSdKJDQ==
 
-patchright@^1.52.5:
-  version "1.52.5"
-  resolved "https://registry.npmjs.org/patchright/-/patchright-1.52.5.tgz"
-  integrity sha512-wmRpsF9n02j0S+YDk0U3ouuWipHbUowwxbf/4K4G9ng311vvugoo8WndbU/fCsGtme8gYNfcEGcpfF6/L1NXHg==
+patchright@^1.55.1:
+  version "1.55.1"
+  resolved "https://registry.yarnpkg.com/patchright/-/patchright-1.55.1.tgz#9167c1c0151653f1b4c73dfef826c41741da1238"
+  integrity sha512-uj8X0sr5TlvabPLZDPQeip1uQ+CeO6VhBQpttNeAEzof3HeIKgRyAJfeNRa5XfU7z768B5w7qQ1hH6Dq6MrPzg==
   dependencies:
-    patchright-core "1.52.5"
+    patchright-core "1.55.1"
   optionalDependencies:
     fsevents "2.3.2"
 
