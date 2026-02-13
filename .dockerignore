@@ -110,3 +110,10 @@ dist
 
 # TernJS port file
 .tern-port
+.git
+.github
+.gitignore
+.gitmodules
+.dockerignore
+*.md
+LICENSE
