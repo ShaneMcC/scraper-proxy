@@ -281,10 +281,10 @@ devtools-protocol@0.0.1581282:
   resolved "https://registry.yarnpkg.com/devtools-protocol/-/devtools-protocol-0.0.1581282.tgz#7f289b837e052ad04eb16e9575877801c2b3716c"
   integrity sha512-nv7iKtNZQshSW2hKzYNr46nM/Cfh5SEvE2oV0/SEGgc9XupIY5ggf84Cz8eJIkBce7S3bmTAauFD6aysMpnqsQ==
 
-dotenv@^17.3.1:
-  version "17.3.1"
-  resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-17.3.1.tgz#2706f5b0165e45a1503348187b8468f87fe6aae2"
-  integrity sha512-IO8C/dzEb6O3F9/twg6ZLXz164a2fhTnEWb95H23Dm4OuN+92NmEAlTrupP9VW6Jm3sO26tQlqyvyi4CsnY9GA==
+dotenv@^17.4.0:
+  version "17.4.0"
+  resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-17.4.0.tgz#9a5de24d7112a889b4b179ffbe83933298c41d37"
+  integrity sha512-kCKF62fwtzwYm0IGBNjRUjtJgMfGapII+FslMHIjMR5KTnwEmBmWLDRSnc3XSNP8bNy34tekgQyDT0hr7pERRQ==
 
 emoji-regex@^8.0.0:
   version "8.0.0"
@@ -667,17 +667,17 @@ parse-json@^5.2.0:
     json-parse-even-better-errors "^2.3.0"
     lines-and-columns "^1.1.6"
 
-patchright-core@1.58.2:
-  version "1.58.2"
-  resolved "https://registry.yarnpkg.com/patchright-core/-/patchright-core-1.58.2.tgz#04a4c3a6dcefdb03aa60f6664d64ab6cf407edcc"
-  integrity sha512-f3r0u6as+4nd0Vmr4ndH/zwijMHj7ECxelSa5iMeIJPxtLOwbo22LQPC1qjZZtSIhAVzUDStx4nw/BW3MqhJIQ==
+patchright-core@1.59.1:
+  version "1.59.1"
+  resolved "https://registry.yarnpkg.com/patchright-core/-/patchright-core-1.59.1.tgz#097ef47102cf94058d1002fecad04981739f7c3a"
+  integrity sha512-VthHtavFwFgs5VRalZtbacmjw8E7SPXPhGjfOakvjPsrJcIHl/i7K9lgKYpevy4F90+/GQSJiO0Mt58JB4+9HQ==
 
-patchright@^1.58.2:
-  version "1.58.2"
-  resolved "https://registry.yarnpkg.com/patchright/-/patchright-1.58.2.tgz#77dc6e01ae967ac0bd98f9acfc68eb9f155eac9a"
-  integrity sha512-B1pufT2A5uZKL4e5/s2cykUo4RpVupHfJ8eTvuS560D/B7H8McjLzN9n6ruYFIi5/e17WJL428bFMUOEgPL5OQ==
+patchright@^1.59.1:
+  version "1.59.1"
+  resolved "https://registry.yarnpkg.com/patchright/-/patchright-1.59.1.tgz#3f0ae5ab3cd6c546784f41f6216bef0570f48b43"
+  integrity sha512-nrWFE1/U3qu9ybrgNFJt75iTiszvZ23Dn4S6UDSydbXJtbyBXRVGenHowKq6n7hmArGYPVTfuDqiXVH7avPkiw==
   dependencies:
-    patchright-core "1.58.2"
+    patchright-core "1.59.1"
   optionalDependencies:
     fsevents "2.3.2"
 
