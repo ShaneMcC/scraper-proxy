@@ -667,17 +667,17 @@ parse-json@^5.2.0:
     json-parse-even-better-errors "^2.3.0"
     lines-and-columns "^1.1.6"
 
-patchright-core@v1.59.3:
-  version "1.59.3"
-  resolved "https://registry.yarnpkg.com/patchright-core/-/patchright-core-1.59.3.tgz#a64dce46f74216c0bafd59119bd387673485c5bf"
-  integrity sha512-EXq8a3nOoiubBtM77W9vYJDP/nFBuGaQK5CAzkaCr9/PTU5DPT1PDW0mDLdeX0P7bzSUgXEHiogHlC4zK2qSzw==
+patchright-core@v1.59.4:
+  version "1.59.4"
+  resolved "https://registry.yarnpkg.com/patchright-core/-/patchright-core-1.59.4.tgz#cd4f6e6802d01df8e3a5cbfb9b91e88c2b924777"
+  integrity sha512-7/vyX0XK0cpGKlcnUD+Rhjv5o9rrmZQl4v/NI+EUBed+VaU5EORpkOF0Gdi+fP698fLhY0tXwacKBUqKE38jQA==
 
-patchright@^1.59.3:
-  version "1.59.3"
-  resolved "https://registry.yarnpkg.com/patchright/-/patchright-1.59.3.tgz#a2999773e20bf1941c6d7f39855f9b6c44960b49"
-  integrity sha512-0i/6bXgv0rGz5khInk8nHb2sX9RbAu/whRUJDL3zvP5j0ovX9ITHF+o/3XlBu0UJ092YvQjO+8pGPEOnzHeeBA==
+patchright@^1.59.4:
+  version "1.59.4"
+  resolved "https://registry.yarnpkg.com/patchright/-/patchright-1.59.4.tgz#0be4bc1d0cd12cd865d1307eb72704c5d054aff8"
+  integrity sha512-RDZ40tBZHZtTAMoUoct/IpMA1wrozPZGU2RFk8NIDEndOEBbLxS0dH2fRLiwsNrgXgjZGA/3krrTlzK+uFGgoQ==
   dependencies:
-    patchright-core v1.59.3
+    patchright-core v1.59.4
   optionalDependencies:
     fsevents "2.3.2"
 
