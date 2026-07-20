@@ -349,17 +349,17 @@ once@^1.3.0:
   dependencies:
     wrappy "1"
 
-patchright-core@1.60.2:
-  version "1.60.2"
-  resolved "https://registry.yarnpkg.com/patchright-core/-/patchright-core-1.60.2.tgz#8bc2e7596a8f90d69c21c4e1a7bed6f0cb38e1ed"
-  integrity sha512-AzUYfbXla1/VVvIKJYK+tOQkdx7PwIM5qSnxz7Hnf2CcRdnqnM6n+goPQl3JLlLdeLj0WA6xlzRn2w/Da7wD4g==
+patchright-core@1.61.0:
+  version "1.61.0"
+  resolved "https://registry.yarnpkg.com/patchright-core/-/patchright-core-1.61.0.tgz#2b20037672fa8efd4491e78f54c481ce6d15e527"
+  integrity sha512-XataPFEwgufNBgIhBMDjrKVXHyrAcW19HlUc//4yBClKzrxgKgcwAGNbg0q1Dn0QEgtgxtAjKRtWsDgqCclI+A==
 
-patchright@^1.60.2:
-  version "1.60.2"
-  resolved "https://registry.yarnpkg.com/patchright/-/patchright-1.60.2.tgz#e9cfa7e6f1c43a74dda513c0a3f529ebd4264611"
-  integrity sha512-4gkWJllmwVcqrcAxjecy6XFsA2df/VXVPj5t+Ezimwm/LPr2QYY8nzcj2FBAb/3u67wu58EXAPLlIZzuFKbeqA==
+patchright@^1.61.0:
+  version "1.61.0"
+  resolved "https://registry.yarnpkg.com/patchright/-/patchright-1.61.0.tgz#ffa9002c1a49e9dbe3d7adbe19ea0de60c05881f"
+  integrity sha512-R2EYP5QnXNIDPVlrTF+vy30fg8cgwYtNhHr9WAaEX20Up19biAfKy1UqmrNiKZKim22OV4fIavfTjiXPU8CKSQ==
   dependencies:
-    patchright-core "1.60.2"
+    patchright-core "1.61.0"
   optionalDependencies:
     fsevents "2.3.2"
 
